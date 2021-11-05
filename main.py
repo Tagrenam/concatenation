@@ -1,6 +1,11 @@
 import os, sys
 import math
 from PIL import Image
+import string, random
+
+
+def do_output_name(_out):
+    return _out + '/' + ''.join(random.choices(string.ascii_lowercase + string.digits, k=6)) + ".jpg"
 
 
 def do_concatenate2(name1, name2, new):
@@ -104,7 +109,7 @@ def concatenate2(_in, _out):
     sortfilesbydate(filelist)
 
     for i in range(len(filelist)//2):
-        do_concatenate2(filelist.pop(), filelist.pop(), _out + "/" + str(i) + ".jpg")
+        do_concatenate2(filelist.pop(), filelist.pop(), do_output_name(_out))
 
 
 def concatenate3(_in, _out):
@@ -116,7 +121,7 @@ def concatenate3(_in, _out):
     sortfilesbydate(filelist)
 
     for i in range(len(filelist)//3):
-        do_concatenate3(filelist.pop(), filelist.pop(), filelist.pop(), _out + "/" + str(i) + ".jpg")
+        do_concatenate3(filelist.pop(), filelist.pop(), filelist.pop(), do_output_name(_out))
 
 
 def concatenate4(_in, _out):
@@ -128,7 +133,7 @@ def concatenate4(_in, _out):
     sortfilesbydate(filelist)
 
     for i in range(len(filelist)//4):
-        do_concatenate4(filelist.pop(), filelist.pop(), filelist.pop(), filelist.pop(), _out + "/" + str(i) + ".jpg")
+        do_concatenate4(filelist.pop(), filelist.pop(), filelist.pop(), filelist.pop(), do_output_name(_out))
 
 
 if __name__ == "__main__":
